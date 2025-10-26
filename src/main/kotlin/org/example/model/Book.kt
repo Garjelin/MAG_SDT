@@ -1,6 +1,6 @@
 package org.example.model
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 
 /**
  * Класс Book представляет книгу в каталоге магазина
@@ -12,6 +12,7 @@ import java.io.Serializable
  * @property price Цена книги
  * @property quantity Количество книг в наличии (дополнительное поле)
  */
+@Serializable
 data class Book(
     val id: Int,
     var author: String,
@@ -20,7 +21,7 @@ data class Book(
     var publicationYear: Int,
     var price: Double,
     var quantity: Int = 0
-) : Serializable {
+) {
 
     /**
      * Получить полную информацию о книге в виде строки
@@ -76,9 +77,5 @@ data class Book(
     fun increaseQuantity(count: Int = 1) {
         require(count > 0) { "Количество должно быть положительным" }
         quantity += count
-    }
-
-    companion object {
-        private const val serialVersionUID = 1L
     }
 }

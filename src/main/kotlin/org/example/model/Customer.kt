@@ -1,6 +1,6 @@
 package org.example.model
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 
 /**
  * Класс Customer представляет покупателя
@@ -10,16 +10,17 @@ import java.io.Serializable
  * @property phone Номер телефона (опционально)
  * @property registrationDate Дата регистрации
  */
+@Serializable
 data class Customer(
     val id: Int,
     var name: String,
     var email: String,
-    var phone: String = ""
-) : Serializable {
-
+    var phone: String = "",
     val registrationDate: Long = System.currentTimeMillis()
+) {
 
-    // Список уведомлений для покупателя
+    // Список уведомлений для покупателя (не сериализуется автоматически)
+    @kotlinx.serialization.Transient
     private val notifications = mutableListOf<String>()
 
     /**
@@ -83,9 +84,5 @@ data class Customer(
     fun getInfo(): String {
         return "ID: $id | Имя: $name | Email: $email" +
                 if (phone.isNotEmpty()) " | Тел: $phone" else ""
-    }
-
-    companion object {
-        private const val serialVersionUID = 1L
     }
 }

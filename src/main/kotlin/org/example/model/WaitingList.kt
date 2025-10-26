@@ -1,35 +1,32 @@
 package org.example.model
 
-import java.io.Serializable
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import kotlinx.serialization.Serializable
 
 /**
  * Класс WaitingListRecord представляет одну запись в базе ожидания
  * @property recordId Уникальный идентификатор записи
  * @property customerId ID покупателя
  * @property bookId ID книги
- * @property registrationDate Дата регистрации в базе ожидания
+ * @property registrationDate Дата регистрации в базе ожидания (timestamp)
  * @property notified Флаг уведомления (был ли покупатель уведомлен)
+ * @property notificationDate Дата уведомления покупателя (timestamp)
  */
+@Serializable
 data class WaitingListRecord(
     val recordId: Int,
     val customerId: Int,
     val bookId: Int,
-    val registrationDate: LocalDateTime = LocalDateTime.now(),
-    var notified: Boolean = false
-) : Serializable {
-
-    // Дата уведомления покупателя
-    var notificationDate: LocalDateTime? = null
-        private set
+    val registrationDate: Long = System.currentTimeMillis(),
+    var notified: Boolean = false,
+    var notificationDate: Long? = null
+) {
 
     /**
      * Пометить покупателя как уведомленного
      */
     fun markAsNotified() {
         notified = true
-        notificationDate = LocalDateTime.now()
+        notificationDate = System.currentTimeMillis()
     }
 
     /**
@@ -37,12 +34,13 @@ data class WaitingListRecord(
      * @return Дата в формате dd.MM.yyyy HH:mm
      */
     fun getFormattedRegistrationDate(): String {
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
-        return registrationDate.format(formatter)
+        return formatTimestamp(registrationDate)
     }
 
-    companion object {
-        private const val serialVersionUID = 1L
+    private fun formatTimestamp(timestamp: Long): String {
+        val date = java.util.Date(timestamp)
+        val format = java.text.SimpleDateFormat("dd.MM.yyyy HH:mm")
+        return format.format(date)
     }
 }
 
@@ -50,10 +48,11 @@ data class WaitingListRecord(
  * Класс WaitingList управляет базой ожидания
  * Хранит записи о покупателях, ожидающих поступления книг
  */
-class WaitingList : Serializable {
-
-    private val records = mutableListOf<WaitingListRecord>()
-    private var nextRecordId = 1
+@Serializable
+data class WaitingList(
+    private val records: MutableList<WaitingListRecord> = mutableListOf(),
+    private var nextRecordId: Int = 1
+) {
 
     /**
      * Добавить покупателя в список ожидания книги
@@ -173,9 +172,5 @@ class WaitingList : Serializable {
     fun clear() {
         records.clear()
         nextRecordId = 1
-    }
-
-    companion object {
-        private const val serialVersionUID = 1L
     }
 }

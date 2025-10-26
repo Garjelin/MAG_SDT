@@ -1,12 +1,13 @@
 package org.example.model
 
-import java.io.Serializable
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 /**
  * Перечисление возможных статусов заказа
  */
+@Serializable
 enum class OrderStatus {
     CREATED,      // Создан
     WAITING,      // В ожидании (книга отсутствует)
@@ -20,22 +21,21 @@ enum class OrderStatus {
  * @property id Уникальный идентификатор заказа
  * @property customerId ID покупателя
  * @property bookId ID книги
- * @property creationDate Дата создания заказа
+ * @property creationDate Дата создания заказа (timestamp)
  * @property status Статус заказа
  * @property quantity Количество книг в заказе
+ * @property lastUpdateDate Дата последнего обновления статуса (timestamp)
  */
+@Serializable
 data class Order(
     val id: Int,
     val customerId: Int,
     val bookId: Int,
-    val creationDate: LocalDateTime = LocalDateTime.now(),
+    val creationDate: Long = System.currentTimeMillis(),
     var status: OrderStatus = OrderStatus.CREATED,
-    var quantity: Int = 1
-) : Serializable {
-
-    // Дата последнего обновления статуса
-    var lastUpdateDate: LocalDateTime = creationDate
-        private set
+    var quantity: Int = 1,
+    var lastUpdateDate: Long = System.currentTimeMillis()
+) {
 
     /**
      * Оформить заказ
@@ -48,7 +48,7 @@ data class Order(
         } else {
             OrderStatus.WAITING
         }
-        lastUpdateDate = LocalDateTime.now()
+        lastUpdateDate = System.currentTimeMillis()
         return status
     }
 
@@ -58,7 +58,7 @@ data class Order(
      */
     fun updateStatus(newStatus: OrderStatus) {
         status = newStatus
-        lastUpdateDate = LocalDateTime.now()
+        lastUpdateDate = System.currentTimeMillis()
     }
 
     /**
@@ -119,8 +119,7 @@ data class Order(
      * @return Дата в формате dd.MM.yyyy HH:mm
      */
     fun getFormattedCreationDate(): String {
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
-        return creationDate.format(formatter)
+        return formatTimestamp(creationDate)
     }
 
     /**
@@ -128,11 +127,12 @@ data class Order(
      * @return Дата в формате dd.MM.yyyy HH:mm
      */
     fun getFormattedUpdateDate(): String {
-        val formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")
-        return lastUpdateDate.format(formatter)
+        return formatTimestamp(lastUpdateDate)
     }
 
-    companion object {
-        private const val serialVersionUID = 1L
+    private fun formatTimestamp(timestamp: Long): String {
+        val date = java.util.Date(timestamp)
+        val format = java.text.SimpleDateFormat("dd.MM.yyyy HH:mm")
+        return format.format(date)
     }
 }

@@ -1,15 +1,16 @@
 package org.example.model
 
-import java.io.Serializable
+import kotlinx.serialization.Serializable
 
 /**
  * Класс Catalog управляет каталогом книг в магазине
  * Предоставляет методы для добавления, удаления, поиска и обновления книг
  */
-class Catalog : Serializable {
-
-    private val books = mutableListOf<Book>()
-    private var nextBookId = 1
+@Serializable
+data class Catalog(
+    private val books: MutableList<Book> = mutableListOf(),
+    private var nextBookId: Int = 1
+) {
 
     /**
      * Добавить книгу в каталог
@@ -241,9 +242,5 @@ class Catalog : Serializable {
     fun clear() {
         books.clear()
         nextBookId = 1
-    }
-
-    companion object {
-        private const val serialVersionUID = 1L
     }
 }
