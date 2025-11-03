@@ -1,0 +1,253 @@
+{
+  "catalog": {
+    "books": [
+      {
+        "id": 1,
+        "author": "Александр Пушкин",
+        "title": "Евгений Онегин",
+        "publisher": "АСТ",
+        "publicationYear": 2020,
+        "price": 350.0,
+        "quantity": 15
+      },
+      {
+        "id": 2,
+        "author": "Лев Толстой",
+        "title": "Война и мир (4 тома)",
+        "publisher": "Эксмо",
+        "publicationYear": 2019,
+        "price": 1250.0,
+        "quantity": 8
+      },
+      {
+        "id": 3,
+        "author": "Федор Достоевский",
+        "title": "Преступление и наказание",
+        "publisher": "АСТ",
+        "publicationYear": 2021,
+        "price": 450.0,
+        "quantity": 0
+      },
+      {
+        "id": 4,
+        "author": "Михаил Булгаков",
+        "title": "Мастер и Маргарита",
+        "publisher": "Азбука",
+        "publicationYear": 2022,
+        "price": 550.0,
+        "quantity": 12
+      },
+      {
+        "id": 5,
+        "author": "Антон Чехов",
+        "title": "Вишневый сад",
+        "publisher": "Эксмо",
+        "publicationYear": 2020,
+        "price": 300.0,
+        "quantity": 6
+      },
+      {
+        "id": 6,
+        "author": "Иван Тургенев",
+        "title": "Отцы и дети",
+        "publisher": "АСТ",
+        "publicationYear": 2021,
+        "price": 380.0,
+        "quantity": 10
+      },
+      {
+        "id": 7,
+        "author": "Николай Гоголь",
+        "title": "Мертвые души",
+        "publisher": "Эксмо",
+        "publicationYear": 2020,
+        "price": 420.0,
+        "quantity": 7
+      },
+      {
+        "id": 8,
+        "author": "Максим Горький",
+        "title": "На дне",
+        "publisher": "Азбука",
+        "publicationYear": 2019,
+        "price": 280.0,
+        "quantity": 5
+      },
+      {
+        "id": 9,
+        "author": "Александр Грибоедов",
+        "title": "Горе от ума",
+        "publisher": "АСТ",
+        "publicationYear": 2022,
+        "price": 320.0,
+        "quantity": 9
+      },
+      {
+        "id": 10,
+        "author": "Михаил Лермонтов",
+        "title": "Герой нашего времени",
+        "publisher": "Эксмо",
+        "publicationYear": 2021,
+        "price": 390.0,
+        "quantity": 11
+      },
+      {
+        "id": 11,
+        "author": "Борис Пастернак",
+        "title": "Доктор Живаго",
+        "publisher": "АСТ",
+        "publicationYear": 2020,
+        "price": 680.0,
+        "quantity": 0
+      },
+      {
+        "id": 12,
+        "author": "Сергей Есенин",
+        "title": "Собрание стихотворений",
+        "publisher": "Азбука",
+        "publicationYear": 2022,
+        "price": 520.0,
+        "quantity": 14
+      }
+    ],
+    "nextBookId": 13
+  },
+  "customers": [
+    {
+      "id": 1,
+      "name": "Иванов Иван Иванович",
+      "email": "ivanov@example.com",
+      "phone": "+7 (900) 123-45-67"
+    },
+    {
+      "id": 2,
+      "name": "Петрова Мария Сергеевна",
+      "email": "petrova@example.com",
+      "phone": "+7 (900) 234-56-78"
+    },
+    {
+      "id": 3,
+      "name": "Сидоров Петр Александрович",
+      "email": "sidorov@example.com",
+      "phone": "+7 (900) 345-67-89"
+    },
+    {
+      "id": 4,
+      "name": "Козлова Анна Дмитриевна",
+      "email": "kozlova@example.com",
+      "phone": "+7 (900) 456-78-90"
+    },
+    {
+      "id": 5,
+      "name": "Смирнов Алексей Викторович",
+      "email": "smirnov@example.com",
+      "phone": "+7 (900) 567-89-01"
+    },
+    {
+      "id": 6,
+      "name": "Морозова Елена Андреевна",
+      "email": "morozova@example.com",
+      "phone": "+7 (900) 678-90-12"
+    },
+    {
+      "id": 7,
+      "name": "Новиков Дмитрий Олегович",
+      "email": "novikov@example.com",
+      "phone": "+7 (900) 789-01-23"
+    },
+    {
+      "id": 8,
+      "name": "Соколова Ольга Николаевна",
+      "email": "sokolova@example.com",
+      "phone": "+7 (900) 890-12-34"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "bookId": 1,
+      "quantity": 2,
+      "orderDate": "2025-10-15T10:30:00",
+      "status": "COMPLETED"
+    },
+    {
+      "id": 2,
+      "customerId": 2,
+      "bookId": 4,
+      "quantity": 1,
+      "orderDate": "2025-10-18T14:20:00",
+      "status": "COMPLETED"
+    },
+    {
+      "id": 3,
+      "customerId": 3,
+      "bookId": 3,
+      "quantity": 1,
+      "orderDate": "2025-10-20T09:15:00",
+      "status": "WAITING"
+    },
+    {
+      "id": 4,
+      "customerId": 1,
+      "bookId": 2,
+      "quantity": 1,
+      "orderDate": "2025-10-22T16:45:00",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 5,
+      "customerId": 4,
+      "bookId": 5,
+      "quantity": 3,
+      "orderDate": "2025-10-25T11:00:00",
+      "status": "COMPLETED"
+    },
+    {
+      "id": 6,
+      "customerId": 5,
+      "bookId": 11,
+      "quantity": 1,
+      "orderDate": "2025-10-28T13:30:00",
+      "status": "WAITING"
+    },
+    {
+      "id": 7,
+      "customerId": 6,
+      "bookId": 12,
+      "quantity": 2,
+      "orderDate": "2025-10-30T15:10:00",
+      "status": "AVAILABLE"
+    },
+    {
+      "id": 8,
+      "customerId": 7,
+      "bookId": 6,
+      "quantity": 1,
+      "orderDate": "2025-11-01T10:00:00",
+      "status": "COMPLETED"
+    }
+  ],
+  "waitingList": {
+    "records": [
+      {
+        "id": 1,
+        "customerId": 3,
+        "bookId": 3,
+        "requestDate": "2025-10-20T09:15:00",
+        "notified": false
+      },
+      {
+        "id": 2,
+        "customerId": 5,
+        "bookId": 11,
+        "requestDate": "2025-10-28T13:30:00",
+        "notified": false
+      }
+    ],
+    "nextRecordId": 3
+  },
+  "nextCustomerId": 9,
+  "nextOrderId": 9
+}
+

@@ -115,29 +115,29 @@ class DataManager {
     }
 
     /**
-     * Создать начальные тестовые данные
-     * @return Новый экземпляр AppData с тестовыми данными
+     * Создать начальные демонстрационные данные
+     * @return Новый экземпляр AppData с полным набором демо-данных
      */
     private fun createInitialData(): AppData {
         val appData = AppData()
 
-        // Добавляем несколько тестовых книг
+        // Добавляем расширенный набор книг (12 книг)
         appData.catalog.addBook(
             author = "Александр Пушкин",
             title = "Евгений Онегин",
             publisher = "АСТ",
             publicationYear = 2020,
             price = 350.0,
-            quantity = 5
+            quantity = 15
         )
 
         appData.catalog.addBook(
             author = "Лев Толстой",
-            title = "Война и мир",
+            title = "Война и мир (4 тома)",
             publisher = "Эксмо",
             publicationYear = 2019,
-            price = 850.0,
-            quantity = 3
+            price = 1250.0,
+            quantity = 8
         )
 
         appData.catalog.addBook(
@@ -146,7 +146,7 @@ class DataManager {
             publisher = "АСТ",
             publicationYear = 2021,
             price = 450.0,
-            quantity = 0  // Нет в наличии
+            quantity = 0  // Нет в наличии - для демонстрации базы ожидания
         )
 
         appData.catalog.addBook(
@@ -155,7 +155,7 @@ class DataManager {
             publisher = "Азбука",
             publicationYear = 2022,
             price = 550.0,
-            quantity = 7
+            quantity = 12
         )
 
         appData.catalog.addBook(
@@ -164,35 +164,130 @@ class DataManager {
             publisher = "Эксмо",
             publicationYear = 2020,
             price = 300.0,
-            quantity = 4
+            quantity = 6
         )
 
-        // Добавляем тестовых покупателей
-        val customer1 = Customer(
+        appData.catalog.addBook(
+            author = "Иван Тургенев",
+            title = "Отцы и дети",
+            publisher = "АСТ",
+            publicationYear = 2021,
+            price = 380.0,
+            quantity = 10
+        )
+
+        appData.catalog.addBook(
+            author = "Николай Гоголь",
+            title = "Мертвые души",
+            publisher = "Эксмо",
+            publicationYear = 2020,
+            price = 420.0,
+            quantity = 7
+        )
+
+        appData.catalog.addBook(
+            author = "Максим Горький",
+            title = "На дне",
+            publisher = "Азбука",
+            publicationYear = 2019,
+            price = 280.0,
+            quantity = 5
+        )
+
+        appData.catalog.addBook(
+            author = "Александр Грибоедов",
+            title = "Горе от ума",
+            publisher = "АСТ",
+            publicationYear = 2022,
+            price = 320.0,
+            quantity = 9
+        )
+
+        appData.catalog.addBook(
+            author = "Михаил Лермонтов",
+            title = "Герой нашего времени",
+            publisher = "Эксмо",
+            publicationYear = 2021,
+            price = 390.0,
+            quantity = 11
+        )
+
+        appData.catalog.addBook(
+            author = "Борис Пастернак",
+            title = "Доктор Живаго",
+            publisher = "АСТ",
+            publicationYear = 2020,
+            price = 680.0,
+            quantity = 0  // Нет в наличии - для демонстрации базы ожидания
+        )
+
+        appData.catalog.addBook(
+            author = "Сергей Есенин",
+            title = "Собрание стихотворений",
+            publisher = "Азбука",
+            publicationYear = 2022,
+            price = 520.0,
+            quantity = 14
+        )
+
+        // Добавляем расширенный набор покупателей (8 покупателей)
+        appData.customers.add(Customer(
             id = appData.nextCustomerId++,
             name = "Иванов Иван Иванович",
             email = "ivanov@example.com",
             phone = "+7 (900) 123-45-67"
-        )
-        appData.customers.add(customer1)
+        ))
 
-        val customer2 = Customer(
+        appData.customers.add(Customer(
             id = appData.nextCustomerId++,
             name = "Петрова Мария Сергеевна",
             email = "petrova@example.com",
             phone = "+7 (900) 234-56-78"
-        )
-        appData.customers.add(customer2)
+        ))
 
-        val customer3 = Customer(
+        appData.customers.add(Customer(
             id = appData.nextCustomerId++,
             name = "Сидоров Петр Александрович",
             email = "sidorov@example.com",
             phone = "+7 (900) 345-67-89"
-        )
-        appData.customers.add(customer3)
+        ))
 
-        println("✓ Созданы тестовые данные: ${appData.catalog.getTotalBooksCount()} книг, ${appData.customers.size} покупателей")
+        appData.customers.add(Customer(
+            id = appData.nextCustomerId++,
+            name = "Козлова Анна Дмитриевна",
+            email = "kozlova@example.com",
+            phone = "+7 (900) 456-78-90"
+        ))
+
+        appData.customers.add(Customer(
+            id = appData.nextCustomerId++,
+            name = "Смирнов Алексей Викторович",
+            email = "smirnov@example.com",
+            phone = "+7 (900) 567-89-01"
+        ))
+
+        appData.customers.add(Customer(
+            id = appData.nextCustomerId++,
+            name = "Морозова Елена Андреевна",
+            email = "morozova@example.com",
+            phone = "+7 (900) 678-90-12"
+        ))
+
+        appData.customers.add(Customer(
+            id = appData.nextCustomerId++,
+            name = "Новиков Дмитрий Олегович",
+            email = "novikov@example.com",
+            phone = "+7 (900) 789-01-23"
+        ))
+
+        appData.customers.add(Customer(
+            id = appData.nextCustomerId++,
+            name = "Соколова Ольга Николаевна",
+            email = "sokolova@example.com",
+            phone = "+7 (900) 890-12-34"
+        ))
+
+        println("✓ Созданы демонстрационные данные: ${appData.catalog.getTotalBooksCount()} книг, ${appData.customers.size} покупателей")
 
         return appData
     }

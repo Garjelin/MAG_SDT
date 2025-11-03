@@ -31,6 +31,17 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "BookShop"
             packageVersion = "1.0.0"
+            
+            windows {
+                // Настройки для Windows
+                menuGroup = "Книжный магазин"
+                upgradeUuid = "BF6C3E1D-7A3F-4F3E-9B2A-1A5D7C8E9F2B"
+                iconFile.set(project.file("src/main/resources/icon.ico"))
+            }
+            
+            description = "Система управления книжным магазином"
+            vendor = "Курсовой проект"
+            licenseFile.set(project.file("LICENSE.txt"))
         }
     }
 }
